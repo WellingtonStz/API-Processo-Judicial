@@ -15,15 +15,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F1BA1CB0-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{82AC1245-20A9-4694-A011-B9D6FE88261D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-ProcessJudicial", "API-ProcessJudicial\API-ProcessJudicial.csproj", "{05B5BDC2-A1BD-4399-BAF5-A9CF6165A084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial", "API-ProcessJudicial\API-ProcessJudicial.csproj", "{05B5BDC2-A1BD-4399-BAF5-A9CF6165A084}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A38609CD-B3C8-4CA4-9E27-E233569884A4} = {A38609CD-B3C8-4CA4-9E27-E233569884A4}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-ProcessJudicial.Domain", "API-ProcessJudicial.Domain\API-ProcessJudicial.Domain.csproj", "{7A654FF7-3B4F-4795-9523-689FA2DB18FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Domain", "API-ProcessJudicial.Domain\API-ProcessJudicial.Domain.csproj", "{7A654FF7-3B4F-4795-9523-689FA2DB18FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-ProcessJudicial.Service", "API-ProcessJudicial.Service\API-ProcessJudicial.Service.csproj", "{0EF46146-1DAE-4777-967A-24F686A0A1EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Service", "API-ProcessJudicial.Service\API-ProcessJudicial.Service.csproj", "{0EF46146-1DAE-4777-967A-24F686A0A1EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-ProcessJudicial.Infra.Data", "API-ProcessJudicial.Infra.Data\API-ProcessJudicial.Infra.Data.csproj", "{A38609CD-B3C8-4CA4-9E27-E233569884A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Infra.Data", "API-ProcessJudicial.Infra.Data\API-ProcessJudicial.Infra.Data.csproj", "{A38609CD-B3C8-4CA4-9E27-E233569884A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-ProcessJudicial.Infra.CrossCutting", "API-ProcessJudicial.Infra.CrossCutting\API-ProcessJudicial.Infra.CrossCutting.csproj", "{9DEA5F23-D6FB-42E1-A15D-F3F3950A23B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Infra.CrossCutting", "API-ProcessJudicial.Infra.CrossCutting\API-ProcessJudicial.Infra.CrossCutting.csproj", "{9DEA5F23-D6FB-42E1-A15D-F3F3950A23B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
