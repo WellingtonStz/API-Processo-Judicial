@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_ProcessJudicial.Infra.Data.Migrations
 {
     [DbContext(typeof(_DbContext))]
-    [Migration("20231004024846_INICIAL")]
-    partial class INICIAL
+    [Migration("20231004231945_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,9 +37,6 @@ namespace API_ProcessJudicial.Infra.Data.Migrations
                     b.Property<long>("IdUsers")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("JudicialProcessIdJudicialProcess")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -48,14 +45,11 @@ namespace API_ProcessJudicial.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("userIdUsers")
-                        .HasColumnType("bigint");
-
                     b.HasKey("IdDocument");
 
-                    b.HasIndex("JudicialProcessIdJudicialProcess");
+                    b.HasIndex("IdJudicialProcess");
 
-                    b.HasIndex("userIdUsers");
+                    b.HasIndex("IdUsers");
 
                     b.ToTable("documents");
                 });
@@ -69,9 +63,6 @@ namespace API_ProcessJudicial.Infra.Data.Migrations
                     b.Property<string>("Documents")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<long>("IdUsers")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("Part")
                         .HasColumnType("bigint");
@@ -90,12 +81,7 @@ namespace API_ProcessJudicial.Infra.Data.Migrations
                     b.Property<double>("ValueCause")
                         .HasColumnType("double");
 
-                    b.Property<long>("userIdUsers")
-                        .HasColumnType("bigint");
-
                     b.HasKey("IdJudicialProcess");
-
-                    b.HasIndex("userIdUsers");
 
                     b.ToTable("judicialprocesses");
                 });
@@ -130,28 +116,17 @@ namespace API_ProcessJudicial.Infra.Data.Migrations
                 {
                     b.HasOne("API_ProcessJudicial.Domain.Entities.JudicialProcess", "JudicialProcess")
                         .WithMany()
-                        .HasForeignKey("JudicialProcessIdJudicialProcess")
+                        .HasForeignKey("IdJudicialProcess")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("API_ProcessJudicial.Domain.Entities.Users", "user")
                         .WithMany()
-                        .HasForeignKey("userIdUsers")
+                        .HasForeignKey("IdUsers")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("JudicialProcess");
-
-                    b.Navigation("user");
-                });
-
-            modelBuilder.Entity("API_ProcessJudicial.Domain.Entities.JudicialProcess", b =>
-                {
-                    b.HasOne("API_ProcessJudicial.Domain.Entities.Users", "user")
-                        .WithMany()
-                        .HasForeignKey("userIdUsers")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("user");
                 });

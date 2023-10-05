@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Validators\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
@@ -24,6 +23,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API-ProcessJudicial.Domain\API-ProcessJudicial.Domain.csproj" />
+    <ProjectReference Include="..\API-ProcessJudicial.Infra.CrossCutting\API-ProcessJudicial.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

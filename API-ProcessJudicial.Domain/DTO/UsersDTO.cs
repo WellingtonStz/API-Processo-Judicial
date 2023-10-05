@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_ProcessJudicial.Domain.Entities
+namespace API_ProcessJudicial.Domain.DTO
 {
-    public class Users
+    public class UsersDTO
     {
-        [Key]
-        [Required]
-        public long IdUsers { get; set; }
         [Required(ErrorMessage = "O campo 'Nome' é obrigatório.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "O campo 'CPF' é obrigatório.")]

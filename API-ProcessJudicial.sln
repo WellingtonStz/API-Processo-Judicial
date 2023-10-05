@@ -23,6 +23,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Domain", "API-ProcessJudicial.Domain\API-ProcessJudicial.Domain.csproj", "{7A654FF7-3B4F-4795-9523-689FA2DB18FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Service", "API-ProcessJudicial.Service\API-ProcessJudicial.Service.csproj", "{0EF46146-1DAE-4777-967A-24F686A0A1EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7A654FF7-3B4F-4795-9523-689FA2DB18FF} = {7A654FF7-3B4F-4795-9523-689FA2DB18FF}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-ProcessJudicial.Infra.Data", "API-ProcessJudicial.Infra.Data\API-ProcessJudicial.Infra.Data.csproj", "{A38609CD-B3C8-4CA4-9E27-E233569884A4}"
 EndProject

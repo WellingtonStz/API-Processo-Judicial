@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API-ProcessJudicial.Infra.Data\API-ProcessJudicial.Infra.Data.csproj" />
+    <ProjectReference Include="..\API-ProcessJudicial.Service\API-ProcessJudicial.Service.csproj" />
   </ItemGroup>
 
 </Project>

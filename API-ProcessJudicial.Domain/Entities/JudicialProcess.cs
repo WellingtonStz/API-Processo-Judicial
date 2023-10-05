@@ -9,8 +9,7 @@ namespace API_ProcessJudicial.Domain.Entities
         [Key]
         [Required]
         public long IdJudicialProcess { get; set; }
-        [Required]
-        public long IdUsers { get; set; }
+        
         [Required]
         public string ProcessNumber { get; set; }
         [Required]
@@ -25,9 +24,6 @@ namespace API_ProcessJudicial.Domain.Entities
         public double ValueCause { get; set; }
 
     
-        public virtual Users user { get; set; }
-
-
 
     }
 }
