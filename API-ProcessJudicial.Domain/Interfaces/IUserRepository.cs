@@ -7,7 +7,7 @@ namespace API_ProcessJudicial.Domain.Interfaces
     {
         public Users CreateUsers(string Name, string CPF, bool IsAdvogado, string Password);
         public Users GetUsers(long IdUser);
-        public bool UpdateUsers(UsersDTO user, long IdUser);
+        public Users UpdateUsers(UpdateUserDTO user);
         public bool DeleteUsers(long IdUser);
 
     }

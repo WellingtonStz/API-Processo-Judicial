@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_ProcessJudicial.Domain.Entities
+namespace API_ProcessJudicial.Domain.DTO
 {
-    public class Users
+    public class UpdateUserDTO
     {
-        [Key]
         [Required]
         public long IdUsers { get; set; }
         [Required]
@@ -15,7 +14,5 @@ namespace API_ProcessJudicial.Domain.Entities
         public bool IsAdvogado { get; set; }
         [Required]
         public string Password { get; set; }
-
-
     }
 }

@@ -27,13 +27,11 @@ namespace API_ProcessJudicial.Infra.Data.Repository
                     IsAdvogado = IsAdvogado,
                 };
 
-                // Adiciona o novo objeto "Usuarios" ao contexto "_context"
                 _context.Add(createUsers);
 
                 // Salva as alterações no banco de dados.
                 _context.SaveChanges();
 
-                // Retorna o objeto "Usuarios" recém-criado após a operação de criação no banco de dados.
                 return createUsers;
 
             }
@@ -47,32 +45,69 @@ namespace API_ProcessJudicial.Infra.Data.Repository
 
         public bool DeleteUsers(long IdUser)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var getUsers = _context.users.Find(IdUser);
+
+                if (getUsers != null)
+
+                {
+                    _context.Remove(getUsers);
+
+                    _context.SaveChanges();
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public Users GetUsers(long IdUser)
         {
             try
             {
-                // Busca o usuário correspondente pelo seu "id" no contexto "_context" usando "_context.users.Find(IdUser)".
                 var GetUserFromId = _context.users.Find(IdUser);
 
-                // Se o usuário for encontrado, retorna o objeto "Usuarios" com as informações do usuário.
                 if (GetUserFromId == null) throw new Exception("Não foi possível encontrar usuário");
 
                 return GetUserFromId;
-                // Caso o usuário não seja encontrado, lança uma exceção com a mensagem "Não foi possível encontrar usuário".
+
             }
             catch
             {
-                // Em caso de exceção durante o processamento, retorna um novo objeto "Usuarios" vazio.
                 throw;
             }
         }
 
-        public bool UpdateUsers(UsersDTO user, long IdUser)
+        public Users UpdateUsers(UpdateUserDTO user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var GetUsers = _context.users.Find(user.IdUsers);
+
+                if (GetUsers != null)
+                {
+                    GetUsers.Name = user.Name;
+                    GetUsers.CPF = user.CPF;
+                    GetUsers.Password = user.Password;
+                    GetUsers.IsAdvogado = user.IsAdvogado;
+
+                    _context.SaveChanges();
+
+                }
+
+                return GetUsers;
+            }
+
+            catch
+            {
+                throw;
+            }
         }
     }
 }
