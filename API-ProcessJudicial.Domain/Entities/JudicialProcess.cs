@@ -23,7 +23,5 @@ namespace API_ProcessJudicial.Domain.Entities
         [Required]
         public double ValueCause { get; set; }
 
-    
-
     }
 }

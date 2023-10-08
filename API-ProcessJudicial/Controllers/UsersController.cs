@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace API_ProcessJudicial.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -36,13 +36,50 @@ namespace API_ProcessJudicial.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Getuser()
+        {
+            try
+            {
+                var GetUser = _validate.GetUsers();
+                return Ok(GetUser);
+            }
+            catch (Exception ex) {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErroDTO()
+                {
+                    Status = StatusCodes.Status500InternalServerError,
+                    MsgError = $"Ocorreu erro ao salvar usuário, Tente Novamente! {ex.Message}"
+                });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetAdvogados()
+        {
+            try
+            {
+                var GetAdvogado = _validate.GetAdvogados();
+                return Ok(GetAdvogado);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErroDTO()
+                {
+                    Status = StatusCodes.Status500InternalServerError,
+                    MsgError = $"Ocorreu erro ao salvar usuário, Tente Novamente! {ex.Message}"
+                });
+            }
+        }
+
         [HttpPost]
         public IActionResult CreateUsers(UsersDTO users)
         {
 
             try
             {
-                var validateUser = _validate.ValidadeUsers(users.Name, users.CPF, users.IsAdvogado, users.Password);
+                var validateUser = _validate.ValidadeUsers(users.Name, users.CPF, users.IsAdvogado, users.Password, users.Oab);
                 return Ok(validateUser);
 
             }
@@ -58,7 +95,7 @@ namespace API_ProcessJudicial.Controllers
 
 
         [HttpPut]
-        public IActionResult Put(UpdateUserDTO users)
+        public IActionResult Update(UpdateUserDTO users)
         {
             try
             {
@@ -104,5 +141,25 @@ namespace API_ProcessJudicial.Controllers
 
 
         }
+
+        [HttpPost] 
+        public IActionResult Login(LoginDTO login)
+        {   
+            try
+            {
+                var LoginUsers = _validate.Login(login);
+                return Ok(LoginUsers);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseErroDTO()
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    MsgError = ex.Message
+                });
+            }
+        }
+
     }
 }

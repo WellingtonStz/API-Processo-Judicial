@@ -12,7 +12,7 @@ namespace API_ProcessJudicial.Domain.Entities
         public long IdUsers { get; set; }
         [Required]
         public long IdJudicialProcess { get; set; }
-        [Required(ErrorMessage = "O campo 'Nome' é obrigatório.")]
+        [Required]
         public string Name { get; set; }
         [Required]
         public string Path { get; set; }

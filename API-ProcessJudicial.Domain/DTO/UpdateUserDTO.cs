@@ -14,5 +14,6 @@ namespace API_ProcessJudicial.Domain.DTO
         public bool IsAdvogado { get; set; }
         [Required]
         public string Password { get; set; }
+        public string? Oab { get; set; }
     }
 }

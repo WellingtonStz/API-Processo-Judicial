@@ -4,14 +4,15 @@ namespace API_ProcessJudicial.Domain.DTO
 {
     public class UsersDTO
     {
-        [Required(ErrorMessage = "O campo 'Nome' é obrigatório.")]
+        [Required]
         public string Name { get; set; }
-        [Required(ErrorMessage = "O campo 'CPF' é obrigatório.")]
+        [Required]
         public string CPF { get; set; }
-        [Required(ErrorMessage = "O campo 'Advogado' é obrigatório.")]
+        [Required]
         public bool IsAdvogado { get; set; }
-        [Required(ErrorMessage = "O campo 'Senha' é obrigatório.")]
+        [Required]
         public string Password { get; set; }
+        public string? Oab { get; set; }
 
 
     }

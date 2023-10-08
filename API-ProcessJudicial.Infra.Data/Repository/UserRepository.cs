@@ -14,7 +14,7 @@ namespace API_ProcessJudicial.Infra.Data.Repository
             _context = context;
         }
 
-        public Users CreateUsers(string Name, string CPF, bool IsAdvogado, string Password)
+        public Users CreateUsers(string Name, string CPF, bool IsAdvogado, string Password, string Oab)
         {
             try
             {
@@ -25,6 +25,7 @@ namespace API_ProcessJudicial.Infra.Data.Repository
                     Password = Password,
                     Name = Name,
                     IsAdvogado = IsAdvogado,
+                    Oab = Oab
                 };
 
                 _context.Add(createUsers);
@@ -67,6 +68,12 @@ namespace API_ProcessJudicial.Infra.Data.Repository
             }
         }
 
+        public List<Users> GetAdvogados()
+        {
+            var Getadvogados = _context.users.Where(a => a.IsAdvogado == true).ToList();
+            return Getadvogados;
+        }
+
         public Users GetUsers(long IdUser)
         {
             try
@@ -84,6 +91,28 @@ namespace API_ProcessJudicial.Infra.Data.Repository
             }
         }
 
+        public List<Users> GetUsers()
+        {
+            var Getusers = _context.users.Where(a => a.IsAdvogado == false).ToList();
+            return Getusers;
+        }
+
+        public SucessDTO Login(string CPF, string Password)
+        {
+            var Autentication = _context.users.FirstOrDefault(a => a.CPF == CPF && a.Password == Password);
+            if (Autentication is null)
+            {
+                throw new Exception("CPF ou Senha inválidos!");
+            }
+            SucessDTO Sucess = new SucessDTO()
+            {
+                IdUsers = Autentication.IdUsers,
+                IsAdvogado = Autentication.IsAdvogado,
+                Name = Autentication.Name,
+            };
+            return Sucess;
+        }
+
         public Users UpdateUsers(UpdateUserDTO user)
         {
             try
@@ -96,6 +125,7 @@ namespace API_ProcessJudicial.Infra.Data.Repository
                     GetUsers.CPF = user.CPF;
                     GetUsers.Password = user.Password;
                     GetUsers.IsAdvogado = user.IsAdvogado;
+                    GetUsers.Oab = user.Oab;
 
                     _context.SaveChanges();
 
