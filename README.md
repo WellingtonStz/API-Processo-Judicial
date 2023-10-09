@@ -18,7 +18,7 @@ Acesse o diretório do projeto:
 cd seu-repositorio
 
 Configure as variáveis de ambiente necessárias.
-ex: Valor da Variavel: Server=localhost; Port=3306; DataBase=users; Uid=root; Pwd=;
+ex: Valor da Variavel: Server=localhost; Port=3306; DataBase=ProcJud; Uid=root; Pwd=;
 
 Execute os seguintes comandos para restaurar as dependências e iniciar a API:
 dotnet restore dotnet run
