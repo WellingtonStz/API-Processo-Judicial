@@ -16,6 +16,9 @@ namespace API_ProcessJudicial.Service.Validators
             _processRepository = processRepository;
         }
 
+        // Este método cria um novo processo judicial com os parâmetros fornecidos.
+        // Ele verifica se os parâmetros estão em um formato válido antes de criar o processo.
+        // Retorna o processo judicial criado.
         public JudicialProcess CreateProcessJudicial(string ProcessNumber, long Part, long Responsible, string Documents, string Theme, double ValueCause)
         {
             if (string.IsNullOrEmpty(ProcessNumber) || string.IsNullOrWhiteSpace(ProcessNumber) || ProcessNumber.Length < 20 && ProcessNumber.Length > 20)
@@ -38,6 +41,8 @@ namespace API_ProcessJudicial.Service.Validators
             return Createprocess;
         }
 
+        // Este método recebe um ID de usuário como entrada e tenta excluí-lo do repositório.
+        // Retorna verdadeiro se a exclusão for bem-sucedida, caso contrário, retorna falso.
         public bool DeleteUsers(long IdUsers)
         {
             try
@@ -55,13 +60,15 @@ namespace API_ProcessJudicial.Service.Validators
             }
         }
 
+        // Este método retorna uma lista de advogados do repositório.
         public List<Users> GetAdvogados()
         {
             var list = _userRepository.GetAdvogados();
             return list;
         }
 
-        public JudicialProcess GetProcessId(long IdUser)
+        // Este método recebe um ID de usuário como entrada e retorna um processo judicial associado a esse usuário.
+         public JudicialProcess GetProcessId(long IdUser)
         {
             try
             {
@@ -80,9 +87,11 @@ namespace API_ProcessJudicial.Service.Validators
         public Users GetUserId(long IdUsers)
         {
             try
-            {               
+            {
+                // Tenta obter o usuário com o ID especificado no repositório.
                 var GetUserFromId = _userRepository.GetUsers(IdUsers);
 
+                // Verifica se o usuário foi encontrado no repositório
                 if (GetUserFromId == null) throw new Exception("Não foi possível encontrar usuário");
 
                 return GetUserFromId;             
@@ -99,6 +108,7 @@ namespace API_ProcessJudicial.Service.Validators
             return list;
         }
 
+        // Este método é usado para autenticar um usuário com base nas informações de login fornecidas.
         public SucessDTO Login(LoginDTO login)
         {
             try
@@ -128,23 +138,30 @@ namespace API_ProcessJudicial.Service.Validators
         }
 
         public Users UpdateUsers(UpdateUserDTO Update)
-        {
+        {    
+              // Verifica se o nome fornecido é válido.
+             // Deve ser uma string não vazia e conter pelo menos 3 caracteres.
             if (string.IsNullOrEmpty(Update.Name) || string.IsNullOrWhiteSpace(Update.Name) || Update.Name.Length <= 2)
             {
                 throw new ArgumentException("Nome inválido!");
             }
 
+            // Verifica se o CPF fornecido é válido.
+            // Deve ser uma string não vazia com 11 a 15 caracteres.
             if (string.IsNullOrEmpty(Update.CPF) || string.IsNullOrWhiteSpace(Update.CPF) || Update.CPF.Length < 11 && Update.CPF.Length > 15)
             {
                 throw new ArgumentException("CPF inválido!");
             }
 
-
+            // Verifica se a senha fornecida é válida.
+            // Deve ser uma string não vazia e conter pelo menos 7 caracteres.
             if (string.IsNullOrEmpty(Update.Password) || string.IsNullOrWhiteSpace(Update.Password) || Update.Password.Length <= 6)
             {
                 throw new ArgumentException("Senha inválida!");
             }
 
+            // Verifica se o número da OAB fornecido é válido.
+            // Deve ser uma string não vazia com exatamente 8 caracteres.
             if (string.IsNullOrEmpty(Update.Oab) || string.IsNullOrWhiteSpace(Update.Oab) || Update.Oab.Length < 8 && Update.Oab.Length > 8)
             {
                 throw new ArgumentException("Número da Oab inválida!");
@@ -166,15 +183,11 @@ namespace API_ProcessJudicial.Service.Validators
                     throw new ArgumentException("Nome inválido!");
                 }
 
-
-
                 // Validação do formato do CPF usando uma expressão regular.
                 if (string.IsNullOrEmpty(CPF) || string.IsNullOrWhiteSpace(CPF) || CPF.Length < 11 && CPF.Length > 15)
                 {
                     throw new ArgumentException("CPF inválido!");
                 }
-
-                // 
 
                 if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password) || Password.Length <= 6)
                 {

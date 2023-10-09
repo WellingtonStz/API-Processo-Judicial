@@ -14,7 +14,7 @@ namespace API_ProcessJudicial.Controllers
             _validate = validate;
         }
 
-
+        // Este método GET retorna detalhes de um processo judicial com base no ID do usuário, ou uma resposta BadRequest em caso de erro.
         [HttpGet("{IdUser}")]
         public IActionResult GetProcessId(long IdUser)
         {
@@ -35,6 +35,7 @@ namespace API_ProcessJudicial.Controllers
 
         }
 
+        // Este método POST cria um novo processo judicial com base nos dados fornecidos, ou retorna uma resposta de erro interno do servidor em caso de exceção.
         [HttpPost]
         public IActionResult CreateProcessJudicial(ProcessJudicialDTO ProcessJudicial)
         {

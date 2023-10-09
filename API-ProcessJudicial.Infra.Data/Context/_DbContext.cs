@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Crud_API.Models
 {
+    // Esta classe representa o DbContext, que é responsável por configurar e acessar o banco de dados.
     public class _DbContext : DbContext
     {
 

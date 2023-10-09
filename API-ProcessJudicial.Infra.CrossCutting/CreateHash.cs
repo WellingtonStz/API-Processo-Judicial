@@ -3,6 +3,7 @@ using System.Text;
 
 namespace API_ProcessJudicial.Infra.CrossCutting
 {
+    // Esta classe fornece um método estático para criar um hash MD5 a partir de uma senha fornecida.
     public class CreateHash
     {
         public static string CreateHashMd5(string password)

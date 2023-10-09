@@ -38,7 +38,6 @@ namespace API_ProcessJudicial.Infra.Data.Repository
             }
             catch
             {
-                // Em caso de exceção durante o processamento, a exceção é propagada para ser tratada em um nível superior.
                 throw;
             }
 

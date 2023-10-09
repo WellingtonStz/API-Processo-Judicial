@@ -15,6 +15,7 @@ namespace API_ProcessJudicial.Controllers
             _validate = validate;
         }
 
+        // Este método GET retorna os detalhes de um usuário com base no ID fornecido, ou uma resposta BadRequest em caso de erro.
         [HttpGet("{IdUser}")]
         public IActionResult GetuserId(long IdUser)
         {
@@ -35,7 +36,7 @@ namespace API_ProcessJudicial.Controllers
 
         }
 
-
+        // Este método GET retorna a lista de usuários se bem-sucedido, ou uma resposta de erro interno do servidor em caso de exceção.
         [HttpGet]
         public IActionResult Getuser()
         {
@@ -54,6 +55,7 @@ namespace API_ProcessJudicial.Controllers
             }
         }
 
+        // Este método GET obtém a lista de advogados, ou retorna uma resposta de erro interno do servidor em caso de exceção.
         [HttpGet]
         public IActionResult GetAdvogados()
         {
@@ -73,6 +75,7 @@ namespace API_ProcessJudicial.Controllers
             }
         }
 
+        // Este método POST cria um novo usuário com base nos dados fornecidos, ou retorna uma resposta de erro interno do servidor em caso de exceção.
         [HttpPost]
         public IActionResult CreateUsers(UsersDTO users)
         {
@@ -93,7 +96,7 @@ namespace API_ProcessJudicial.Controllers
             }
         }
 
-
+        // Este método PUT atualiza os detalhes de um usuário com base nos dados fornecidos, ou retorna uma resposta de erro interno do servidor em caso de exceção.
         [HttpPut]
         public IActionResult Update(UpdateUserDTO users)
         {
@@ -115,7 +118,7 @@ namespace API_ProcessJudicial.Controllers
 
         }
 
-
+        // Este método DELETE exclui um usuário com base no ID fornecido, ou retorna uma resposta de erro interno do servidor em caso de exceção.
         [HttpDelete("{IdUser}")]
         public IActionResult Delete(long IdUser)
         {
@@ -142,6 +145,7 @@ namespace API_ProcessJudicial.Controllers
 
         }
 
+        // Este método POST é usado para autenticar um usuário com base nas informações de login fornecidas.
         [HttpPost] 
         public IActionResult Login(LoginDTO login)
         {   
